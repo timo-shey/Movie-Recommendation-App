@@ -1,4 +1,2 @@
-package com.example.moviesearchapplication.model;
-
-public class User {
+package com.example.moviesearchapplication.model;public class User {
 }
