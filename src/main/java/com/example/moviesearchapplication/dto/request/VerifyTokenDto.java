@@ -1,2 +1,8 @@
-package com.example.moviesearchapplication.dto.request;public class VerifyTokenDto {
+package com.example.moviesearchapplication.dto.request;
+
+import lombok.Data;
+
+@Data
+public class VerifyTokenDto {
+    private String token;
 }

@@ -7,11 +7,11 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 @Data
-public class SignUpDto {
+public class SignUpRequestDto {
     @NotBlank(message = "firstname cannot be blank")
     private String firstName;
 
-    @NotBlank(message = "lastname cannot be blank")
+    @NotBlank(message = "lastname cannot bpe blank")
     private String lastName;
 
     @NotBlank(message = "email cannot be blank")
