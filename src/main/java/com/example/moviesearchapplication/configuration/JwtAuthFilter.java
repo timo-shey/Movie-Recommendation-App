@@ -1,4 +1,4 @@
-package com.example.moviesearchapplication.configuration.security;
+package com.example.moviesearchapplication.configuration;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -43,9 +43,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if (isTokenValid) {
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
-
                 authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
                 SecurityContextHolder.getContext().setAuthentication(authToken);
             }
         }

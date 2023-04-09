@@ -1,4 +1,4 @@
-package com.example.moviesearchapplication.configuration.security;
+package com.example.moviesearchapplication.configuration;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;

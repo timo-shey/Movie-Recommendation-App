@@ -12,11 +12,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "rating_tbl")
 public class Rating extends Base {
+    @Column(nullable = false)
     private Integer ratingValue;
 
-    @Column(nullable = false)
-    private Long filmId;
+    @ManyToOne
+    @JoinColumn(name = "film_id")
+    private Film film;
 
-    @Column(nullable = false)
-    private Long userId;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }

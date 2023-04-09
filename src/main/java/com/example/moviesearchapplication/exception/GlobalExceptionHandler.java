@@ -29,18 +29,18 @@ public class GlobalExceptionHandler {
         return  new ApiResponse<>("Failed","Error: "+ex.getMessage(), null);
     }
 
-    @ExceptionHandler(ValidationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(EmailNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ResponseBody
-    public ApiResponse<String> handleValidationException(ValidationException ex){
+    public ApiResponse<String> handleEmailNotFoundException(EmailNotFoundException ex){
         logger.error(ex.getMessage());
         return  new ApiResponse<>("Failed","Error: "+ex.getMessage(), null);
     }
 
-    @ExceptionHandler(MailSendingException.class)
-    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler(ValidationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ResponseBody
-    public ApiResponse<String> handleMailSendingException(MailSendingException ex){
+    public ApiResponse<String> handleValidationException(ValidationException ex){
         logger.error(ex.getMessage());
         return  new ApiResponse<>("Failed","Error: "+ex.getMessage(), null);
     }

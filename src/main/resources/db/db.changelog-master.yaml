@@ -1,0 +1,150 @@
+changeLogFile: db/db.changelog-master.yaml
+url: jdbc:postgresql://localhost:5432/moviesearchdb
+username: postgres
+password: 1234
+
+logging:
+  level: info
+
+referenceUrl: hibernate:spring:com.example.myapp.domain?dialect=org.hibernate.dialect.PostgreSQLDialect&hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: Timileyin
+      changes:
+        - createTable:
+            tableName: user_tbl
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: phone_number
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: password
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: confirmation_token
+                  type: varchar(255)
+              - column:
+                  name: is_active
+                  type: boolean
+                  defaultValue: false
+              - column:
+                  name: role
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+            primaryKey:
+              columnNames: id
+
+  - changeSet:
+      id: 2
+      author: Timileyin
+      changes:
+        - createTable:
+            tableName: rating_tbl
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: rating_value
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: film_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+            primaryKey:
+              columnNames: id
+            foreignKeyConstraints:
+              - foreignKeyConstraint:
+                  baseColumnNames: film_id
+                  referencedTableName: film_tbl
+                  referencedColumnNames: id
+                  constraintName: fk_rating_film
+              - foreignKeyConstraint:
+                  baseColumnNames: user_id
+                  referencedTableName: user_tbl
+                  referencedColumnNames: id
+                  constraintName: fk_rating_user
+
+  - changeSet:
+      id: 3
+      author: Timileyin
+      changes:
+        - createTable:
+            tableName: film_tbl
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: director
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: genre
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: rating
+                  type: double precision
+            primaryKey:
+              columnNames: id
+            foreignKeyConstraints:
+              - foreignKeyConstraint:
+                  baseColumnNames: base_id
+                  referencedTableName: base
+                  referencedColumnNames: id
+                  constraintName: fk_film_base

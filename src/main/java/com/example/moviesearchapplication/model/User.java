@@ -28,5 +28,7 @@ public class User extends Base{
     private boolean isActive;
     @Enumerated(EnumType.STRING)
     private Role role;
-    private Long ratingId;
+    @OneToMany(mappedBy = "user")
+    private List<Rating> ratings;
+
 }

@@ -1,4 +1,4 @@
-package com.example.moviesearchapplication.configuration.security;
+package com.example.moviesearchapplication.configuration;
 
 import com.example.moviesearchapplication.exception.UserNotFoundException;
 import com.example.moviesearchapplication.model.User;

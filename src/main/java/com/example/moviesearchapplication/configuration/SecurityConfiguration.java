@@ -1,4 +1,4 @@
-package com.example.moviesearchapplication.configuration.security;
+package com.example.moviesearchapplication.configuration;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,18 +25,12 @@ public class SecurityConfiguration {
     AuthenticationEntryPoint authEntryPoint;
     private final String path = "/api/v1/auth";
     private final String[] AUTH_WHITELIST = {
-            path +"/login/**", path + "/forgot-password", path + "/change-password",
-            path + "/register", path + "/verify-code", path + "/references",
-            "/v3/api-docs/**",  "/configuration/**",   "/swagger*/**", "/api/v1/wallet/transaction-webhook", "/api/v1/bills/bills-webhook-vtpass",
-            "/swagger-ui/**",  "/webjars/**", "/api/v1/bills/verify-account", "/api/v1/wallet/validate-account",
-
-            path + "/register", path + "/verify-code", path + "/references",
-            path + "/forgot-password/**",
-            path + "/reset-password/**",
-            path + "/verify-token/**",
+            path +"/login/**",
+            path + "/change-password",
             path + "/sign-up",
-            "/api/v1/transfers/bank/response",
-            path + "/verify-link/**"
+            path + "/reset-password/**",
+            "/api/v1/films/add", "/api/v1/films", "/api/v1/films/{id}",
+            "/api/v1/films/searchByTitle", "/api/v1/films/searchByGenre", "/api/v1/films/searchByDirector"
     };
 
     private final JwtAuthFilter jwtAuthFilter;

@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  API:
+    image: moviesearchapi
+    ports:
+      - "9090:8080"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/moviesearchdb
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+
+  db:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - "5430:5432"
+
+    environment:
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - POSTGRES_DB=moviesearchdb
+      - POSTGRES_HOST_AUTH_METHOD=trust
